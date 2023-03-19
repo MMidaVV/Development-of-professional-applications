@@ -1,0 +1,9 @@
+li a {
+    color: gray;
+    font-size: 50px;
+    text-decoration: none;
+}
+body {
+    background: url("https://img1.akspic.ru/crops/8/0/6/8/3/138608/138608-anonimnye_narkomany-elektronnoe_ustrojstvo-haker-nebo-illustracia-1920x1080.jpg") no-repeat;
+    background-size:cover;
+}
