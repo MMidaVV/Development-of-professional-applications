@@ -1,0 +1,110 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Посты{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Пользователи</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Пользователь</th>
+                    <th scope="col">Пароль</th>
+                    <th scope="col">Дата регистрации</th>
+                </tr>
+            </thead>
+            {% for el in users %}
+            <tbody>
+                <tr>
+                    <td>{{ el.username }}</td>
+                    <td>{{ el.password }}</td>
+                    <td>{{ el.date_joined }}</td>
+                    <td><a href="{% url 'posts-detail' el.id %}" class="btn btn-warning">Смотреть отдельно</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <a href="{% url 'createUsers'  %}"><button class="btn btn-warning"> Добавить запись </button></a>
+
+        <h1>Посты</h1>
+        {% for el in posts %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id автора</th>
+                    <th scope="col">Пост</th>
+                    <th scope="col">Кол-во лайков</th>
+                    <th scope="col">Дата поста</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ el.author_id }}</td>
+                    <td>{{ el.post }}</td>
+                    <td>{{ el.like }}</td>
+                    <td>{{ el.date_created }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        {% endfor %}
+
+        <h1>Лайки</h1>
+        {% for el in likes %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Пост</th>
+                    <th scope="col">Автор лайка</th>
+                    <th scope="col">Дата лайка</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ el.post }}</td>
+                    <td>{{ el.user }}</td>
+                    <td>{{ el.date_like }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+
+        <h1>Подписки</h1>
+        {% for el in subscribes %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Подписчик</th>
+                    <th scope="col">Блогер</th>
+                    <th scope="col">Дата подписки</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ el.follower }}</td>
+                    <td>{{ el.following }}</td>
+                    <td>{{ el.date_follow }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+
+        <h1>Картинки</h1>
+        {% for el in images %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Пост</th>
+                    <th scope="col">Ссылка на картинку</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ el.post }}</td>
+                    <td>{{ el.image }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+{% endblock %}

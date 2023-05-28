@@ -1,0 +1,18 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Добавление пользователя{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Добавление пользователя</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.username }}<br>
+            {{ form.password }}<br>
+            {{ form.date_joined }}<br>
+            <span>{{ error }}</span>
+            <h3>Нажми, чтобы добавить</h3>
+            <button class="btn btn-success" type="submit">Жмяк</button>
+        </form>
+    </div>
+{% endblock %}
