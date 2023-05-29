@@ -1,0 +1,22 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}{{ likes.post }}{% endblock %}
+
+{% block content  %}
+
+<div class="features">
+    <table class="table">
+        <thead><tr><th>Пост: {{ likes.post }}</th></tr></thead>
+        <thead><tr><th>Автор лайка: {{ likes.user }}</th></tr></thead>
+        <thead><tr><th>Дата лайка: {{ likes.date_like }}</th></tr></thead>
+        {% if request.user.is_superuser %}
+        <td>
+            <a href="{% url 'likes-update' likes.id %}" class="btn btn-warning">Изменить</a>
+            <a href="{% url 'likes-delete' likes.id %}" class="btn btn-danger">Удалить</a>
+        </td>
+        {% else %}
+        {% endif %}
+    </table>
+</div>
+
+{% endblock %}

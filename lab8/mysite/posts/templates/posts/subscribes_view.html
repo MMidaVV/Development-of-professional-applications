@@ -1,0 +1,22 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}{{ subscribes.follower }}{% endblock %}
+
+{% block content  %}
+
+<div class="features">
+    <table class="table">
+        <thead><tr><th>Блогер: {{ subscribes.follower }}</th></tr></thead>
+        <thead><tr><th>Подписчик: {{ subscribes.following }}</th></tr></thead>
+        <thead><tr><th>Дата подписки: {{ subscribes.date_follow }}</th></tr></thead>
+        {% if request.user.is_superuser %}
+        <td>
+            <a href="{% url 'subscribes-update' subscribes.id %}" class="btn btn-warning">Изменить</a>
+            <a href="{% url 'subscribes-delete' subscribes.id %}" class="btn btn-danger">Удалить</a>
+        </td>
+        {% else %}
+        {% endif %}
+    </table>
+</div>
+
+{% endblock %}

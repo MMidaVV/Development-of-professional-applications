@@ -1,0 +1,123 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Посты{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Пользователи</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Пользователь</th>
+                    <th scope="col">Пароль</th>
+                    <th scope="col">Дата регистрации</th>
+                </tr>
+            </thead>
+            {% for el in users %}
+            <tbody>
+                <tr>
+                    <td>{{ el.username }}</td>
+                    <td>{{ el.password }}</td>
+                    <td>{{ el.date_joined }}</td>
+                    <td><a href="{% url 'users-detail' el.id %}" class="btn btn-warning">Смотреть отдельно</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'createUsers'  %}"><button class="btn btn-warning"> Добавить запись </button></a>
+
+        <h1>Посты</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id автора</th>
+                    <th scope="col">Пост</th>
+                    <th scope="col">Кол-во лайков</th>
+                    <th scope="col">Дата поста</th>
+                </tr>
+            </thead>
+            {% for el in posts %}
+            <tbody>
+                <tr>
+                    <td>{{ el.author_id }}</td>
+                    <td>{{ el.post }}</td>
+                    <td>{{ el.like }}</td>
+                    <td>{{ el.date_created }}</td>
+                    <td><a href="{% url 'posts-detail' el.id %}" class="btn btn-warning">Смотреть отдельно</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'createPosts'  %}"><button class="btn btn-warning"> Добавить запись </button></a>
+
+        <h1>Лайки</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Пост</th>
+                    <th scope="col">Автор лайка</th>
+                    <th scope="col">Дата лайка</th>
+                </tr>
+            </thead>
+            {% for el in likes %}
+            <tbody>
+                <tr>
+                    <td>{{ el.post }}</td>
+                    <td>{{ el.user }}</td>
+                    <td>{{ el.date_like }}</td>
+                    <td><a href="{% url 'likes-detail' el.id %}" class="btn btn-warning">Смотреть отдельно</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'createLikes'  %}"><button class="btn btn-warning"> Добавить запись </button></a>
+
+        <h1>Подписки</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Подписчик</th>
+                    <th scope="col">Блогер</th>
+                    <th scope="col">Дата подписки</th>
+                </tr>
+            </thead>
+            {% for el in subscribes %}
+            <tbody>
+                <tr>
+                    <td>{{ el.follower }}</td>
+                    <td>{{ el.following }}</td>
+                    <td>{{ el.date_follow }}</td>
+                    <td><a href="{% url 'subscribes-detail' el.id %}" class="btn btn-warning">Смотреть отдельно</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'createSubscribes'  %}"><button class="btn btn-warning"> Добавить запись </button></a>
+
+        <h1>Картинки</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Пост</th>
+                    <th scope="col">Ссылка на картинку</th>
+                </tr>
+            </thead>
+            {% for el in images %}
+            <tbody>
+                <tr>
+                    <td>{{ el.post }}</td>
+                    <td>{{ el.image }}</td>
+                    <td><a href="{% url 'images-detail' el.id %}" class="btn btn-warning">Смотреть отдельно</a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'createImages'  %}"><button class="btn btn-warning"> Добавить запись </button></a>
+
+    </div>
+{% endblock %}

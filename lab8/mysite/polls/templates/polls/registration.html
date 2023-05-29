@@ -1,0 +1,18 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Регистрация</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for el in form %}
+            <p><label class="col-form-label" for="{{ el.id_for_label }}">{{ el.label }}</label>{{ el }}</p>
+            {{ el.errors }}
+            {% endfor %}
+            <h3>Нажми, чтобы добавить</h3>
+            <button class="btn btn-success" type="submit">Жмяк</button>
+        </form>
+    </div>
+{% endblock %}

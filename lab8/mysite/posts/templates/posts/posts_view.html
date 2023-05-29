@@ -1,0 +1,23 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}{{ posts.username }}{% endblock %}
+
+{% block content  %}
+
+<div class="features">
+    <table class="table">
+        <thead><tr><th>Пользователь: {{ posts.author_id }}</th></tr></thead>
+        <thead><tr><th>Пост: {{ posts.post }}</th></tr></thead>
+        <thead><tr><th>Лайки: {{ posts.like }}</th></tr></thead>
+        <thead><tr><th>Дата поста: {{ posts.date_created }}</th></tr></thead>
+        {% if request.user.is_superuser %}
+        <td>
+            <a href="{% url 'posts-update' posts.id %}" class="btn btn-warning">Изменить</a>
+            <a href="{% url 'posts-delete' posts.id %}" class="btn btn-danger">Удалить</a>
+        </td>
+        {% else %}
+        {% endif %}
+    </table>
+</div>
+
+{% endblock %}

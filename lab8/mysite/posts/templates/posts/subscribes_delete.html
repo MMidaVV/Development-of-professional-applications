@@ -1,0 +1,23 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Удаление подписки{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Удаление подписки</h1>
+        <form method="post">
+            <table class="table">
+                <thead><tr><th>Блогер: {{ subscribes.follower }}</th></tr></thead>
+                <thead><tr><th>Подписчик: {{ subscribes.following }}</th></tr></thead>
+                <thead><tr><th>Дата подписки: {{ subscribes.date_follow }}</th></tr></thead>
+            </table>
+            {% csrf_token %}
+            {{ form.follower }}
+            {{ form.following }}
+            {{ form.date_follow }}
+            <span>{{ error }}</span>
+            <h3>Нажми, чтобы удалить</h3>
+            <button class="btn btn-success" type="submit">Жмяк</button>
+        </form>
+    </div>
+{% endblock %}

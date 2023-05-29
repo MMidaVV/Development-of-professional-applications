@@ -1,0 +1,23 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Удаление лайка{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Удаление лайка</h1>
+        <form method="post">
+            <table class="table">
+                <thead><tr><th>Пост: {{ likes.post }}</th></tr></thead>
+                <thead><tr><th>Автор лайка: {{ likes.user }}</th></tr></thead>
+                <thead><tr><th>Дата лайка: {{ likes.date_like }}</th></tr></thead>
+            </table>
+            {% csrf_token %}
+            {{ form.post }}
+            {{ form.user }}
+            {{ form.date_like }}
+            <span>{{ error }}</span>
+            <h3>Нажми, чтобы удалить</h3>
+            <button class="btn btn-success" type="submit">Жмяк</button>
+        </form>
+    </div>
+{% endblock %}

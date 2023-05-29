@@ -1,0 +1,18 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Изменение лайка{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Изменение лайка</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.post }}<br>
+            {{ form.user }}<br>
+            {{ form.date_like }}<br>
+            <span>{{ error }}</span>
+            <h3>(Нажми, чтобы изменения вступили в силу)</h3>
+            <button class="btn btn-success" type="submit">Жмяк</button>
+        </form>
+    </div>
+{% endblock %}
