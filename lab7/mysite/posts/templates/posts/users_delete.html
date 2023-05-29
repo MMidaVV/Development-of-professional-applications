@@ -1,0 +1,23 @@
+{% extends 'polls/layout.html' %}
+
+{% block title %}Удаление пользователя{% endblock %}
+
+{% block content  %}
+    <div class="features">
+        <h1>Удаление пользователя</h1>
+        <form method="post">
+            <table class="table">
+                <thead><tr><th>Пользователь: {{ users.username }}</th></tr></thead>
+                <thead><tr><th>Пароль: {{ users.password }}</th></tr></thead>
+                <thead><tr><th>Дата: {{ users.date_joined }}</th></tr></thead>
+            </table>
+            {% csrf_token %}
+            {{ form.username }}<br>
+            {{ form.password }}<br>
+            {{ form.date_joined }}<br>
+            <span>{{ error }}</span>
+            <h3>Нажми, чтобы удалить</h3>
+            <button class="btn btn-success" type="submit">Жмяк</button>
+        </form>
+    </div>
+{% endblock %}
